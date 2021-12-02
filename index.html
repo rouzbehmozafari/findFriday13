@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TITLE</title>
+    <link rel="stylesheet">
+    <style>
+        li{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<!-- HEADER -->
+    <header>
+    </header>
+<!-- MAIN -->
+    <main>
+        
+    </main>
+<!-- FOOTER -->
+    <footer>
+    </footer>
+<!-- SCRIPT -->
+    <script>
+        let years = [2015,2016,2020]
+        let date = new Date()
+        let counter = 0;
+        date.setDate(13);
+        // date.toLocaleDateString("en-US")
+        // console.log(date)
+        for (year of years){
+            let div = document.createElement('div')
+            document.body.children[1].appendChild(div)
+            let months = document.createElement('ul')
+            div.appendChild(months)
+
+            date.setFullYear(year);
+            for (let i = 0 ; i < 12 ; i++){
+            date.setMonth(i);
+            if (date.getDay()== 5){
+                let monthsList = document.createElement('li')
+                let monthsListContent = document.createTextNode(date+ i)
+                monthsList.appendChild(monthsListContent)
+                months.appendChild(monthsList)
+                counter++
+            }
+            if (i==11){
+                let heading = document.createTextNode(`Das ${year} hat ${counter} Unglückstage`)
+                let head = document.createElement('h1')
+                head.appendChild(heading)
+                months.before(head)
+                counter = 0
+            }
+        }
+        
+        }
+        </script>
+</body>
+</html>
